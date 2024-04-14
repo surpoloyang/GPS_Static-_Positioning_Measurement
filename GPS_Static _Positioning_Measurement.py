@@ -1,6 +1,6 @@
 import math
 from typing import List
-import numpy as np
+# import numpy as np
 def dms_to_rad(dms:List[str]):
     degree, minute, second = dms
     degree = float(degree)
@@ -35,8 +35,14 @@ def CoordinateTransformation(benchmark, testpoint):
     return distance
 
 def calculate_mean_std(distances):
-    mean = np.mean(distances)
-    std = np.std(distances)
+    # use numpy:
+    # mean = np.mean(distances)
+    # std = np.std(distances)
+    # print('mean:', mean, 'std:', std)
+
+    # default:
+    mean = sum(distances) / len(distances)
+    std = math.sqrt(sum([(x-mean)**2 for x in distances])/len(distances))
     print('mean:', mean, 'std:', std)
     return mean, std
 
